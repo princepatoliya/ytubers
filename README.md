@@ -36,6 +36,11 @@ EMAIL_HOST_PASSWORD = <Value>
 KEY_ID = <Value>
 KEY_SECRET = <Value>
 ```
+- finally run server
+```
+cd ytubers
+python manage.py runserver
+```
 
 
 
