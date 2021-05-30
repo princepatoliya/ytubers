@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<main class="about-us">
+    <div class="banner">
+      <img src="{% static './assets/images/all-banner.png' %}" alt="" class="img-fluid w-100">
+      <h1 class="text-center">
+        Contact Us
+      </h1>
+    </div>
+    <h2 class="text-center mt-5 mb-2  animate__animated animate__flipInX animate__slow	">
+      Get in touch with Our Team
+    </h2>
+    <p class="text-center mb-3  animate__animated animate__flipInX animate__delay-1s">
+      Fill the form below and we will get in touch asap
+    </p>
+
+    <section class="container mt-5">
+      <div class="row ">
+        <div class="col-md-6 mb-2 ">
+          <form method="POST" action="{% url 'contactus' %}">
+            {% csrf_token %}
+              {% if user.is_authenticated %}
+                <input type="hidden" value="{{ user.id }}" name="user_id" class="form-control">
+              {% else %}
+                <input type="hidden" value="00" name="user_id" class="form-control">
+              {% endif %}
+            <div class="form-row">
+              <div class="form-group col-lg-6">
+                {% if user.is_authenticated %}
+                <input type="text" value="{{ user.first_name }} {{ user.last_name }}" name="name" class="form-control" placeholder="Full Name" required="" oninvalid="this.setCustomValidity('Please Enter name')" oninput="setCustomValidity('')">
+                {% else %}
+                <input type="text" name="name" class="form-control" placeholder="Full Name" required="" oninvalid="this.setCustomValidity('Please Enter name')" oninput="setCustomValidity('')">
+                {% endif %}
+              </div>
+              <div class="form-group col-lg-6">
+                <input type="text" name="contactno" class="form-control" placeholder="Phone Number" required="" oninvalid="this.setCustomValidity('Please Enter phone number')" oninput="setCustomValidity('')">
+              </div>
+            </div>
+            <div class="form-group">
+              {% if user.is_authenticated %}
+              <input type="text" value="{{ user.email }}" name="emailid" class="form-control" placeholder="Email" required="" oninvalid="this.setCustomValidity('Please Enter email')" oninput="setCustomValidity('')">
+              {% else %}
+              <input type="text" name="emailid" class="form-control" placeholder="Email" required="" oninvalid="this.setCustomValidity('Please Enter email')" oninput="setCustomValidity('')">
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <input type="text" name="companyname" class="form-control" placeholder="Company Name" required="" oninvalid="this.setCustomValidity('Please Enter companyname')" oninput="setCustomValidity('')">
+            </div>
+            <div class="form-group">
+              <input type="text" name="subject" class="form-control" placeholder="Subject" required="" oninvalid="this.setCustomValidity('Please Enter what is your subject.')" oninput="setCustomValidity('')">
+            </div>
+            <div class="form-group pt-2">
+              <textarea class="form-control" name="message" rows="3" placeholder="Details Message" required="" oninvalid="this.setCustomValidity('Must be need to write something')" oninput="setCustomValidity('')"></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-accent">Contact Us</button>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="col-md-4 offset-md-2 d-flex justify-content-center mb-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-4">
+                <h6 class="card-title font-weight-bolder">Phone</h6>
+                <span class="card-text">{{contact.phone_no}}</span>
+              </div>
+              <div class="mb-4">
+                <h6 class="card-title font-weight-bolder">Email</h6>
+                <span class="card-text">{{contact.email_id}}</span>
+  
+              </div>
+              <div class="mb-4">
+                <h6 class="card-title font-weight-bolder">Address</h6>
+                <span class="card-text">{{contact.address}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}

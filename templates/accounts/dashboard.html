@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- django message template if any occur. -->
+{% include 'messages.html' %}
+
+  <main class="contact-us">
+    <div class="banner">
+      <img src="{% static './assets/images/bg-banner.png' %}" alt="" class="img-fluid w-100">
+      <h1 class="text-center">
+        Dashboard
+      </h1>
+    </div>
+
+    <section class="container mt-5">
+      <h2 class="text-center">Welcome to Dashboard</h2>
+      <h4 class="text-center text-white-50">
+        {% if user.is_authenticated %}
+            <p>Hi, {{ user.get_username }} Hope you are having a good day.</p>
+        {% else %}
+            <p>Welcome, new user. Please log in.</p>
+        {% endif %}
+      </h4>
+
+      <div class="table-responsive- mt-3">
+        {% if ytuber %}
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">YTubers_name</th>
+                <th scope="col">City</th>
+                <th scope="col">Date&Time</th>
+                <th scope="col">Visit</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for tuber in ytuber %}
+            
+              <tr>
+                <td>{{ tuber.tuber_name }}</td>
+                <td>{{ tuber.city }}</td>
+                <td>{{ tuber.created_date }}</td>
+                <td>
+                  <button onclick="window.location.href= '{% url 'youtubers_detail' tuber.tuber_id %}' " class="btn btn-accent">Go to Page </button>
+                </td>
+              </tr>
+            {% endfor%}
+            </tbody>
+          </table>
+        {% else %}
+        <div class="text-center">  
+          <p> No data found </p>
+          <p> Seems like you haven't hire any tubers.</p>
+        </div>
+
+        {% endif %}
+        </div>
+
+    </section>
+  </main>
+
+{% endblock %}

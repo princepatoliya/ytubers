@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% include 'includes/csslinks.html' %}
+
+  <title>ytubers | Hire youtubers</title>
+</head>
+
+<body>
+  <!-- header start-->
+
+  {% include 'includes/header.html' %}
+
+  <!-- nav-bar goes here -->
+  {% include 'includes/navbar.html' %}
+
+  <!-- header end -->
+
+{% block content %}
+
+{% endblock %}
+
+  <!-- footer -->
+
+  {% include 'includes/footer.html' %}
+
+  <!-- footer ends -->
+
+  <!-- scripts -->
+
+  {% include 'includes/scripts.html' %}
+
+  <!-- scripts -->
+
+</body>
+
+</html>

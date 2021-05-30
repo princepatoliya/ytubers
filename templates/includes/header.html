@@ -1,0 +1,26 @@
+<header class="header ">
+    <div class="container">
+      <div class="row ">
+        <div class="col-md-6 header-info">
+          <a href="mailto:info@ytubers.com" class="mr-3">
+            <span>{{contact.email_id}}</sapn>
+          </a>
+          <span>Call at: {{contact.phone_no}}</span>
+        </div>
+        <div class="header-buttons col-md-6 d-flex justify-content-end">
+          {% if user.is_authenticated %}
+            <a hidden class="btn btn-accent mr-3" href="{% url 'profile' %}">Profile</a>
+            <a class="btn btn-accent mr-3" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="btn btn-accent mr-3" href="{% url 'logout' %}">Logout</a>
+            <a class="btn btn-accent " href="{% url 'donate_page' %}">Donate</a>
+            
+          {% else %}
+            <a class="btn btn-accent mr-3" href="{% url 'login' %}">Signin</a>
+            <a class="btn btn-accent mr-3 " href="{% url 'register' %}">SignUp</a>
+            <a class="btn btn-accent " href="{% url 'donate_page' %}">Donate</a>
+            
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </header>

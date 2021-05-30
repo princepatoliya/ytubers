@@ -1,0 +1,44 @@
+{% extends 'base.html '%}
+
+{% load static %}
+
+{% block content %}
+
+<!-- I copied the login template and do some changes to it. -->
+<!-- in css enter login class because same css -->
+<main class="login container">
+<h1 class="title-coffee text-right mt-5 mb-5 animate__animated animate__slideInDown">
+    Give us some for coffee
+</h1>
+
+    <!-- django message template if any occur. -->
+    <div class="row">
+     <div class="col-md-6 offset-md-6">
+      {% include 'messages.html' %}
+     </div>
+    </div>
+
+
+<div class="row">
+    <div class="col-md-6 ">
+    <img src="{% static './assets/images/coffee-bg.png' %}" class="img-fluid" alt="img">
+    </div>
+    <form method="POST" action="{% url 'donate_page' %}" class="col-md-5 offset-1">
+    {% csrf_token %}
+    <div class="form-group">
+        <input name="name" type="text" class="form-control" placeholder="Name" required="" oninvalid="this.setCustomValidity('Please Enter name')" oninput="setCustomValidity('')">
+        <small id="nameHelp" class="form-text text-muted">Enter the correct name, so that we will help you in case of donation-related problems.</small>
+    </div>
+
+    <div class="form-group">
+        <input  name="amount"  type="number" class="form-control" placeholder="Enter amount" required="" oninvalid="this.setCustomValidity('Please Enter amount')" oninput="setCustomValidity('')"/>
+    </div>
+
+    <button type="submit" class="btn btn-success form-btn w-100 mt-3 mb-3">Donate</button>
+ 
+    </form>
+</div>
+
+</main>
+
+{% endblock %}

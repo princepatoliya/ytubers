@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+  <main class="register container">
+    <h1 class="text-right mt-5 mb-5 animate__animated animate__slideInDown">
+      Register
+    </h1>
+
+    <!-- django message template if any occur. -->
+    <div class="row">
+     <div class="col-md-4 offset-md-4">
+      {% include 'messages.html' %}
+     </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 ">
+        <img src="{% static './assets/images/login-image.png'%}" class="img-fluid" alt="img">
+      </div>
+      <form method="POST" action="{% url 'register' %}" class="col-md-5 offset-md-1">
+        {% csrf_token %}
+        <div class="form-group">
+          <input name="firstname" type="text" class="form-control" placeholder="First Name" required="" oninvalid="this.setCustomValidity('Please Enter firstname')" oninput="setCustomValidity('')" >
+        </div>
+        <div class="form-group">
+          <input name="lastname" type="text" class="form-control" placeholder="Last Name" required="" oninvalid="this.setCustomValidity('Please Enter lastname')" oninput="setCustomValidity('')">
+        </div>
+        <div class="form-group"> 
+          <input name="username" type="text" class="form-control" placeholder="UserName" required="" oninvalid="this.setCustomValidity('Please Enter username')" oninput="setCustomValidity('')">
+        </div>
+        <div class="form-group">
+          <input name="email" type="email" class="form-control" placeholder="Email Address" required="" oninvalid="this.setCustomValidity('Please Enter email')" oninput="setCustomValidity('')">
+        </div>
+        <div class="form-group">
+          <input name="password" type="password" id="password" class="form-control" placeholder="Password" required="" oninvalid="this.setCustomValidity('Please Enter password')" oninput="setCustomValidity('')">
+
+        </div>
+        <div class="form-group">
+          <input name="confirm_password" type="password" id="confirm_password" class="form-control" placeholder="Confirm Password" required="" oninvalid="this.setCustomValidity('Re-enter password')" oninput="setCustomValidity('')">
+        </div>
+
+        <div class="text-center">
+           <span id='message'></span>
+        </div>
+
+        <button type="submit" class="btn btn-accent form-btn w-100 mt-3 mb-3">Signup</button>
+        <div hidden class="text-center">
+          OR
+        </div>
+
+        <a hidden class="btn btn-accent form-btn w-100 mt-3 mb-3" href=""> Google </a>
+
+      </form>
+    </div>
+  </main>
+
+{% endblock %}
