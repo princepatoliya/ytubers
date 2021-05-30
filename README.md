@@ -1,6 +1,16 @@
 # YTubers
 ---
 
+Project for beginner(Django)
+
+Features
+- register with email verification and Login
+- sending mails for hiring notification
+- donate with razorpay
+- full functionally from admin site
+- some normal CURD functions etc.(only some, You also have to work a little bit :)
+---
+
 ## Setup
 
 The first thing to do is to clone the repository:
