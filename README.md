@@ -8,7 +8,7 @@ Features
 - sending mails for hiring notification
 - donate with razorpay
 - full functionally from admin site
-- some normal CURD functions etc.(only some, You also have to work a little bit :)
+- some normal CURD functions etc.
 ---
 
 ## Setup
